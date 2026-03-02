@@ -1,4 +1,4 @@
-module "s3" {
-  source      = "./s3"
-  my_bucket_name = var.bucket_name
+module "user" {
+  source       = "./user"
+  my_user_name = "test_user"
 }
