@@ -1,21 +1,21 @@
-# Terraform tests with aws example
+# Terraform tests – AWS example
 
 ### Overview
 
-This repository provides a simple example of how to use Terraform tests.
+This repository shows a simple example of how to use Terraform tests.
 
-The tests create real resources on AWS and perform proper example assertions.
+The tests create real resources in AWS and verify them using example assertions.
 
 ### Setup
 
-This project requires AWS credentials to be configured before running the tests.
+Before running the tests, you need to configure your AWS credentials.
 
-More information is available in the official AWS documentation:
+You can find more information in the official AWS documentation:
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html
 
-### RUN
+## Run
 
-#### Command line:
+#### Command line
 
 ```bash
 terraform init && terraform test
@@ -45,6 +45,21 @@ tests/test_change_user_name.tftest.hcl... in progress
   run "change_username_apply"... pass
 tests/test_change_user_name.tftest.hcl... tearing down
 tests/test_change_user_name.tftest.hcl... pass
+```
+
+### Helpful tip
+
+If you want to see the resource in the AWS Console before running terraform destroy, you can use the following
+configuration:
+
+```terraform
+provider "time" {}
+
+resource "time_sleep" "wait_5_minutes" {
+  depends_on = [aws_iam_user.my_user]
+  create_duration = "2m"
+}
+
 ```
 
 **Learn and have fun! 🎉**

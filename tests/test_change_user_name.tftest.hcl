@@ -60,3 +60,6 @@ run "change_username_apply" {
   }
 
 }
+
+# All resources are removed after the tests finish.
+# It does not matter whether the tests passed or failed.
